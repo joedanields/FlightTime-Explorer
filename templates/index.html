@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<h1>Find Flights within 1 Hour</h1>
+
+<!-- Form to input the time -->
+<form action="/get_flights" method="get">
+    <label for="time">Enter the time (HH:MM):</label>
+    <input type="text" id="time" name="time" required>
+    <button type="submit">Search Flights</button>
+</form>
+
+{% if flights %}
+    <h2>Flights within 1-hour range for {{ query_time.strftime('%H:%M') }}:</h2>
+    <ul>
+    {% for flight in flights %}
+        <li>Flight No: {{ flight['flight_no'] }}, From: {{ flight['from'] }}, To: {{ flight['to'] }},
+            Price: ₹{{ flight['price'] }}, Time: {{ flight['time'] }}</li>
+    {% endfor %}
+    </ul>
+{% elif query_time %}
+    <p>No flights found within 1-hour range for {{ query_time.strftime('%H:%M') }}.</p>
+{% endif %}
+
+</body>
+</html>
