@@ -1,5 +1,3 @@
-Here’s an example of a `README.md` file that explains how to set up and run the Flask-based flight booking project:
-
 ### `README.md`
 
 ```markdown
@@ -14,6 +12,7 @@ This is a simple flight booking system built using Flask, which allows users to 
 - **HTML Frontend**: The user interface is built using HTML with a simple form to input the desired time.
 
 ## Project Structure
+Certainly! Here's the correct and properly formatted project directory structure for the flight booking system:
 
 ```
 /flight-booking-project/
@@ -24,7 +23,7 @@ This is a simple flight booking system built using Flask, which allows users to 
 │   ├── /js/                    # JavaScript files
 │   │   └── app.js              # Optional JS for dynamic frontend behavior
 │   └── /images/                # Images like logos, icons, etc.
-│       └── logo.png
+│       └── logo.png            # Logo or other images
 │
 ├── /templates/                 # Folder for HTML templates
 │   └── index.html              # Main HTML page for displaying flight information
@@ -34,8 +33,26 @@ This is a simple flight booking system built using Flask, which allows users to 
 │
 ├── app.py                      # Flask backend (Python script)
 │
-└── requirements.txt           # Python dependencies
+└── requirements.txt            # Python dependencies
 ```
+
+### Explanation of the directory structure:
+
+- `/static/`: Contains all the static assets such as CSS, JavaScript, and images.
+  - `/css/`: A folder for CSS files, in this case, `style.css` is used to style the frontend.
+  - `/js/`: A folder for JavaScript files, in this case, `app.js` for any dynamic behavior or interactions.
+  - `/images/`: Folder for image files, like logos, icons, etc. (`logo.png` is an example).
+  
+- `/templates/`: Contains HTML files (Jinja templates) for rendering frontend pages.
+  - `index.html`: The main HTML page that displays the flight search form and results.
+  
+- `/data/`: A folder containing the JSON file (`flight_details.json`) with flight information that is used to render the available flights.
+  
+- `app.py`: The backend Flask application that handles the server logic, handles requests, and serves the appropriate flight data.
+
+- `requirements.txt`: This file contains the list of Python dependencies required for the project, like `Flask`.
+
+This is the recommended way to organize your files for the project. Let me know if you need more details or any changes!
 
 ## Setup and Installation
 
