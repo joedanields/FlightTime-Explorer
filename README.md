@@ -14,8 +14,7 @@ This is a simple flight booking system built using Flask, which allows users to 
 ## Project Structure
 Certainly! Here's the correct and properly formatted project directory structure for the flight booking system:
 
-```
-/flight-booking-project/
+```/flight-booking-project/
 │
 ├── /static/                    # Folder for static files (CSS, JS, images, etc.)
 │   ├── /css/                   # CSS files
@@ -33,8 +32,7 @@ Certainly! Here's the correct and properly formatted project directory structure
 │
 ├── app.py                      # Flask backend (Python script)
 │
-└── requirements.txt            # Python dependencies
-```
+└── requirements.txt            # Python dependencies```
 
 ### Explanation of the directory structure:
 
