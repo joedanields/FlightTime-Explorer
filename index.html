@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .error {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flight Search</h1>
+        <label for="flight-time">Enter Time (HH:MM)</label>
+        <input type="time" id="flight-time" required />
+        <button onclick="searchFlights()">Search Flights</button>
+
+        <div id="error-message" class="error"></div>
+
+        <table id="flights-table" style="display:none;">
+            <thead>
+                <tr>
+                    <th>Flight No</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        async function searchFlights() {
+            const time = document.getElementById("flight-time").value;
+            const errorMessage = document.getElementById("error-message");
+            const flightsTable = document.getElementById("flights-table");
+            const tableBody = flightsTable.querySelector("tbody");
+
+            // Reset table and error message
+            tableBody.innerHTML = "";
+            flightsTable.style.display = "none";
+            errorMessage.innerHTML = "";
+
+            if (!time) {
+                errorMessage.innerHTML = "Please enter a valid time.";
+                return;
+            }
+
+            try {
+                const response = await fetch(`/get_flights?time=${time}`);
+                const flights = await response.json();
+
+                if (response.status !== 200 || flights.length === 0) {
+                    errorMessage.innerHTML = "No flights found within 1-hour range.";
+                } else {
+                    flightsTable.style.display = "block";
+                    flights.forEach(flight => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${flight.flight_no}</td>
+                            <td>${flight.from}</td>
+                            <td>${flight.to}</td>
+                            <td>${flight.price}</td>
+                            <td>${flight.discound}%</td>
+                            <td>${flight.time}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                }
+            } catch (error) {
+                errorMessage.innerHTML = "An error occurred. Please try again later.";
+            }
+        }
+    </script>
+</body>
+</html>
