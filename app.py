@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Sample flight data (this could come from your JSON file)
 flights_data = [
-    {"flight_no": "6e339", "from": "CBE", "to": "Chennai", "price": "3605", "time": "06:35"},
+    {"flight_no": "6e338", "from": "CBE", "to": "Chennai", "price": "3605", "time": "06:35"},
     {"flight_no": "6e6011", "from": "CBE", "to": "Chennai", "price": "3605", "time": "14:10"},
     {"flight_no": "6e981", "from": "CBE", "to": "Chennai", "price": "3912", "time": "08:00"},
     {"flight_no": "6e6918", "from": "CBE", "to": "Chennai", "price": "3920", "time": "10:00"},
