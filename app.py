@@ -5,6 +5,8 @@ import json
 app = Flask(__name__)
 
 # Sample flight data (this could come from your JSON file)
+
+
 flights_data = [
     {"flight_no": "6e338", "from": "CBE", "to": "Chennai", "price": "3605", "time": "06:35"},
     {"flight_no": "6e6011", "from": "CBE", "to": "Chennai", "price": "3605", "time": "14:10"},
